@@ -1,5 +1,25 @@
 class Author
+  attr_reader :books
   def initialize(info)
-    @info = info
+    @first_name = info[:first_name]
+    @last_name = info[:last_name]
+    @books = []
   end
+
+  def name
+    "#{@first_name} #{@last_name}"
+  end
+
+  def write(title, publication_date)
+
+    info = {author_first_name: @first_name,
+            author_last_name: @last_name,
+            title: title,
+            publication_date: publication_date}
+
+    new_book = Book.new(info)
+    @books << new_book
+    new_book
+  end
+
 end
